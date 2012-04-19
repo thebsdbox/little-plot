@@ -8,6 +8,11 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface LittlePlotLineView : NSView
+@interface LittlePlotLineView : NSView {
+    
+}
+
+-(BOOL)setPoints:(NSMutableArray *)pointsArray;
+
 
 @end

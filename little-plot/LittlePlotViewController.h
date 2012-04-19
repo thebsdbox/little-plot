@@ -10,4 +10,11 @@
 
 @interface LittlePlotViewController : NSViewController
 
+
+-(void)createPie;
+-(void)createLine;
+-(void)setPlotArray:(NSArray *)plotArray;
+
+-(NSArray *)plotArray;
+
 @end

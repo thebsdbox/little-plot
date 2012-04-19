@@ -17,10 +17,24 @@
 @interface LittlePlotViewController () {
     LittlePlotLineView *_lineView;
     LittlePlotPieView *_pieView;
+    NSArray *_plotArray;
 }
 @end
 
 @implementation LittlePlotViewController
+
+
+-(void)createPie {
+}
+-(void)createLine {
+}
+-(void)setPlotArray:(NSArray *)plotArray{
+    _plotArray = plotArray;
+}
+
+-(NSArray *)plotArray {
+    return _plotArray;
+}
 
 
 @end
