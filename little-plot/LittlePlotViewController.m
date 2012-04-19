@@ -8,6 +8,19 @@
 
 #import "LittlePlotViewController.h"
 
+// Includes for LittlePlot<X>View
+// PieView
+#import "LittlePlotPieView.h"
+// LineView
+#import "LittlePlotLineView.h"
+
+@interface LittlePlotViewController () {
+    LittlePlotLineView *_lineView;
+    LittlePlotPieView *_pieView;
+}
+@end
+
 @implementation LittlePlotViewController
+
 
 @end
