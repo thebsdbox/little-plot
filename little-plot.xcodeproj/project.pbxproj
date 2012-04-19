@@ -1,0 +1,295 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		379371171540393C00BD1AC4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 379371161540393C00BD1AC4 /* Cocoa.framework */; };
+		379371211540393C00BD1AC4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3793711F1540393C00BD1AC4 /* InfoPlist.strings */; };
+		379371231540393C00BD1AC4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 379371221540393C00BD1AC4 /* main.m */; };
+		379371271540393C00BD1AC4 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 379371251540393C00BD1AC4 /* Credits.rtf */; };
+		3793712A1540393C00BD1AC4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 379371291540393C00BD1AC4 /* AppDelegate.m */; };
+		3793712D1540393D00BD1AC4 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3793712B1540393D00BD1AC4 /* MainMenu.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		379371121540393C00BD1AC4 /* little-plot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "little-plot.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		379371161540393C00BD1AC4 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		379371191540393C00BD1AC4 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		3793711A1540393C00BD1AC4 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		3793711B1540393C00BD1AC4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		3793711E1540393C00BD1AC4 /* little-plot-Info.plist */ = {isa = PBXFileReference; path = "little-plot-Info.plist"; sourceTree = "<group>"; };
+		379371201540393C00BD1AC4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		379371221540393C00BD1AC4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		379371241540393C00BD1AC4 /* little-plot-Prefix.pch */ = {isa = PBXFileReference; path = "little-plot-Prefix.pch"; sourceTree = "<group>"; };
+		379371261540393C00BD1AC4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		379371281540393C00BD1AC4 /* AppDelegate.h */ = {isa = PBXFileReference; path = AppDelegate.h; sourceTree = "<group>"; };
+		379371291540393C00BD1AC4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		3793712C1540393D00BD1AC4 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3793710F1540393C00BD1AC4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				379371171540393C00BD1AC4 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		379371071540393C00BD1AC4 = {
+			isa = PBXGroup;
+			children = (
+				3793711C1540393C00BD1AC4 /* little-plot */,
+				379371151540393C00BD1AC4 /* Frameworks */,
+				379371131540393C00BD1AC4 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		379371131540393C00BD1AC4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				379371121540393C00BD1AC4 /* little-plot.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		379371151540393C00BD1AC4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				379371161540393C00BD1AC4 /* Cocoa.framework */,
+				379371181540393C00BD1AC4 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		379371181540393C00BD1AC4 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				379371191540393C00BD1AC4 /* AppKit.framework */,
+				3793711A1540393C00BD1AC4 /* CoreData.framework */,
+				3793711B1540393C00BD1AC4 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		3793711C1540393C00BD1AC4 /* little-plot */ = {
+			isa = PBXGroup;
+			children = (
+				379371281540393C00BD1AC4 /* AppDelegate.h */,
+				379371291540393C00BD1AC4 /* AppDelegate.m */,
+				3793712B1540393D00BD1AC4 /* MainMenu.xib */,
+				3793711D1540393C00BD1AC4 /* Supporting Files */,
+			);
+			path = "little-plot";
+			sourceTree = "<group>";
+		};
+		3793711D1540393C00BD1AC4 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3793711E1540393C00BD1AC4 /* little-plot-Info.plist */,
+				3793711F1540393C00BD1AC4 /* InfoPlist.strings */,
+				379371221540393C00BD1AC4 /* main.m */,
+				379371241540393C00BD1AC4 /* little-plot-Prefix.pch */,
+				379371251540393C00BD1AC4 /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		379371111540393C00BD1AC4 /* little-plot */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 379371301540393D00BD1AC4 /* Build configuration list for PBXNativeTarget "little-plot" */;
+			buildPhases = (
+				3793710E1540393C00BD1AC4 /* Sources */,
+				3793710F1540393C00BD1AC4 /* Frameworks */,
+				379371101540393C00BD1AC4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "little-plot";
+			productName = "little-plot";
+			productReference = 379371121540393C00BD1AC4 /* little-plot.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		379371091540393C00BD1AC4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0430;
+			};
+			buildConfigurationList = 3793710C1540393C00BD1AC4 /* Build configuration list for PBXProject "little-plot" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 379371071540393C00BD1AC4;
+			productRefGroup = 379371131540393C00BD1AC4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				379371111540393C00BD1AC4 /* little-plot */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		379371101540393C00BD1AC4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				379371211540393C00BD1AC4 /* InfoPlist.strings in Resources */,
+				379371271540393C00BD1AC4 /* Credits.rtf in Resources */,
+				3793712D1540393D00BD1AC4 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3793710E1540393C00BD1AC4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				379371231540393C00BD1AC4 /* main.m in Sources */,
+				3793712A1540393C00BD1AC4 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		3793711F1540393C00BD1AC4 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				379371201540393C00BD1AC4 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		379371251540393C00BD1AC4 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				379371261540393C00BD1AC4 /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		3793712B1540393D00BD1AC4 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3793712C1540393D00BD1AC4 /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3793712E1540393D00BD1AC4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		3793712F1540393D00BD1AC4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		379371311540393D00BD1AC4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "little-plot/little-plot-Prefix.pch";
+				INFOPLIST_FILE = "little-plot/little-plot-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		379371321540393D00BD1AC4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "little-plot/little-plot-Prefix.pch";
+				INFOPLIST_FILE = "little-plot/little-plot-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3793710C1540393C00BD1AC4 /* Build configuration list for PBXProject "little-plot" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3793712E1540393D00BD1AC4 /* Debug */,
+				3793712F1540393D00BD1AC4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		379371301540393D00BD1AC4 /* Build configuration list for PBXNativeTarget "little-plot" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				379371311540393D00BD1AC4 /* Debug */,
+				379371321540393D00BD1AC4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 379371091540393C00BD1AC4 /* Project object */;
+}
