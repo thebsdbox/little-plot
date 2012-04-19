@@ -27,7 +27,9 @@
         //[[NSColor whiteColor] set]; // white background
         //NSRectFill([self bounds]);
         
-        NSArray *pathsArray = [self segmentPathsArray];
+       // NSArray *pathsArray = [self segmentPathsArray];
+        NSArray *pathsArray = _segmentPathsArray;
+        
         // count;
         for( unsigned count = 0; count < [pathsArray count]; count++ )
         {
@@ -83,47 +85,29 @@
 	return [colorsArray objectAtIndex:index];
 }
 
-/*
-
-- (NSArray *)segmentPathsArray
-{
-	return _segmentPathsArray;
-}
-
-- (NSArray *)segmentValuesArray
-{
-	return _segmentValuesArray;
-}
-
-- (NSArray *)segmentNamesArray {
-    return _segmentNamesArray;
-}
-*/
-- (void)setSegmentNamesArray:(NSArray *)newArray
-{
-	[self willChangeValueForKey:@"segmentNamesArray"];
-	_segmentNamesArray = newArray;
-	[self didChangeValueForKey:@"segmentNamesArray"];
-    
-	[self generateDrawingInformation];
-	[self setNeedsDisplayInRect:[self visibleRect]];
-}
-
 - (void)setSegmentValuesArray:(NSArray *)newArray
 {
-	[self willChangeValueForKey:@"segmentValuesArray"];
-	_segmentValuesArray = [newArray copy];
-	[self didChangeValueForKey:@"segmentValuesArray"];
-    
+	_pieSegmentArray = [newArray copy];    
 	[self generateDrawingInformation];
 	[self setNeedsDisplayInRect:[self visibleRect]];
 }
+
+- (void)setPieSegmentArray:(NSArray *)pieSegmentArray {
+    _pieSegmentArray = pieSegmentArray;
+    [self generateDrawingInformation];
+    [self setNeedsDisplayInRect:[self visibleRect]];
+}
+
 
 - (void)generateDrawingInformation
 {
 	// Keep a pointer to the segmentValuesArray
-	NSArray *cachedSegmentValuesArray = [self segmentValuesArray];
-	// Get rid of any existing Paths Array
+	
+    //NSArray *cachedSegmentValuesArray = [self segmentValuesArray];
+	
+    NSArray *cachedSegmentValuesArray = _pieSegmentArray;
+    
+    // Get rid of any existing Paths Array
 	if( _segmentPathsArray )
 	{
 		_segmentPathsArray = nil;
@@ -198,4 +182,51 @@
 
 
 @end
+
+
+
+
+// old Getter methods
+
+
+/*
+ 
+ - (NSArray *)segmentPathsArray
+ {
+ return _segmentPathsArray;
+ }
+ 
+ - (NSArray *)segmentValuesArray
+ {
+ return _segmentValuesArray;
+ }
+ 
+ - (NSArray *)segmentNamesArray {
+ return _segmentNamesArray;
+ }
+ 
+ // Old Setter method
+ 
+ - (void)setSegmentNamesArray:(NSArray *)newArray
+ {
+ [self willChangeValueForKey:@"segmentNamesArray"];
+ _pieSegmentArray = newArray;
+ [self didChangeValueForKey:@"segmentNamesArray"];
+ 
+ [self generateDrawingInformation];
+ [self setNeedsDisplayInRect:[self visibleRect]];
+ }
+ 
+ - (void)setSegmentValuesArray:(NSArray *)newArray
+ {
+ [self willChangeValueForKey:@"segmentValuesArray"];
+ _pieSegmentArray = [newArray copy];
+ [self didChangeValueForKey:@"segmentValuesArray"];
+ 
+ [self generateDrawingInformation];
+ [self setNeedsDisplayInRect:[self visibleRect]];
+ }
+ 
+ */
+
 

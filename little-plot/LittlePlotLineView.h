@@ -13,6 +13,9 @@
 }
 
 -(BOOL)setPoints:(NSMutableArray *)pointsArray;
+-(void)drawPoints;
+-(void)drawFirePoints;
+
 
 
 @end
