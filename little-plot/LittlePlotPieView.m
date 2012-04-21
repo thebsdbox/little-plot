@@ -8,6 +8,14 @@
 
 #import "LittlePlotPieView.h"
 
+@interface  LittlePlotPieView (){
+    NSMutableArray *_segmentPathsArray;
+    BOOL _enableDebug;
+
+}
+
+@end
+
 @implementation LittlePlotPieView
 
 - (id)initWithFrame:(NSRect)frame
@@ -23,34 +31,49 @@
 - (void)drawRect:(NSRect)dirtyRect
 {
     // Drawing code here.
-    {
-        //[[NSColor whiteColor] set]; // white background
-        //NSRectFill([self bounds]);
-        
-       // NSArray *pathsArray = [self segmentPathsArray];
+    
+        if (_enableDebug) {
+            [[NSColor redColor] set];        // NSRectFill([self bounds]);
+            NSRect viewRect = [self bounds];
+            NSBezierPath *rectPath = [NSBezierPath bezierPathWithRect:viewRect];
+            [rectPath stroke];
+        }
+        if (_colourArray == nil) {
+            _colourArray = [[NSMutableArray alloc] init];
+        }
         NSArray *pathsArray = _segmentPathsArray;
-        
+        if ([_colourArray count] < [_pieSegmentArray count]) {
+            while ([_colourArray count] <= [_pieSegmentArray count]) {
+                //if there are no colours or empty spaces add some random colours
+                [_colourArray addObject:[self randomColor]];
+            }
+        }
         // count;
         for( unsigned count = 0; count < [pathsArray count]; count++ )
         {
             NSBezierPath *eachPath = [pathsArray objectAtIndex:count];
             
             // fill the path with the drawing color for this index
-            [[self colorForIndex:count] set];
+            [(NSColor *)[_colourArray objectAtIndex:count] set];
+            //[[self colorForIndex:count] set];
             [eachPath fill];
             
             // draw a black border around it
             [[NSColor blackColor] set];
-            [eachPath setLineWidth:0.1f];
+            [eachPath setLineWidth:0.5];
             [eachPath stroke];
         }
-    }
+   
 }
 
 - (BOOL)isFlipped
 {
     // Ensures that 0,0 is top left corner !
-	return YES;
+	return NO;
+}
+
+- (void)debugView:(BOOL)enableDebug {
+    _enableDebug = enableDebug;
 }
 
 - (NSColor *)randomColor
@@ -66,30 +89,28 @@
 - (NSColor *)colorForIndex:(unsigned)index
 {
 	//static 
-    NSMutableArray *colorsArray = nil;
+   // NSMutableArray *colorsArray = nil;
     
-	if( colorsArray == nil )
+	if( _colourArray == nil )
 	{
-		colorsArray = [[NSMutableArray alloc] init];
+		_colourArray = [[NSMutableArray alloc] init];
 	}
     
-	if( index >= [colorsArray count] )
+	if( index >= [_colourArray count] )
 	{
 		NSUInteger currentNum = 0;
-		for(currentNum = [colorsArray count]; currentNum  <= index; currentNum++ )
+		for(currentNum = [_colourArray count]; currentNum  <= index; currentNum++ )
 		{
-			[colorsArray addObject:[self randomColor]];
+			[_colourArray addObject:[self randomColor]];
 		}
 	}
     
-	return [colorsArray objectAtIndex:index];
+	return [_colourArray objectAtIndex:index];
 }
 
-- (void)setSegmentValuesArray:(NSArray *)newArray
-{
-	_pieSegmentArray = [newArray copy];    
-	[self generateDrawingInformation];
-	[self setNeedsDisplayInRect:[self visibleRect]];
+- (void)setPieSegmentColourArray:(NSMutableArray *)pieSegmentColourArray {
+    _colourArray = pieSegmentColourArray;
+    
 }
 
 - (void)setPieSegmentArray:(NSArray *)pieSegmentArray {

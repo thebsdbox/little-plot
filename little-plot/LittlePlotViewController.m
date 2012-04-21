@@ -1,10 +1,6 @@
 //
 //  LittlePlotViewController.m
 //  little-plot
-//
-//  Created by Daniel Finneran on 19/04/2012.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
-//
 
 #import "LittlePlotViewController.h"
 
@@ -23,11 +19,18 @@
 
 @implementation LittlePlotViewController
 
-
 -(void)createPie {
+    _pieView = [[LittlePlotPieView alloc] init];
+    self.view = _pieView;
 }
+
 -(void)createLine {
+    _lineView = [[LittlePlotLineView alloc] init];
+    self.view = _lineView;
 }
+
+
+
 -(void)setPlotArray:(NSArray *)plotArray{
     _plotArray = plotArray;
 }
@@ -35,6 +38,7 @@
 -(NSArray *)plotArray {
     return _plotArray;
 }
+
 
 
 @end

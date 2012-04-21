@@ -9,22 +9,17 @@
 #import <Cocoa/Cocoa.h>
 
 @interface LittlePlotPieView : NSView {	
-   // NSArray *_segmentNamesArray;
 	NSArray *_pieSegmentArray;
-    NSArray *_colourArray;
-	NSMutableArray *_segmentPathsArray;
+    NSMutableArray *_colourArray;
 }
 
 
-//- (NSArray *)segmentNamesArray;
-//- (void)setSegmentNamesArray:(NSArray *)newArray;
-
-//- (NSArray *)segmentValuesArray;
-- (void)setSegmentValuesArray:(NSArray *)newArray;
 - (void)setPieSegmentArray:(NSArray *)pieSegmentArray;
+- (void)setPieSegmentColourArray:(NSArray *)pieSegmentColourArray;
 
 //- (NSArray *)segmentPathsArray;
 - (void)generateDrawingInformation;
+- (void)debugView:(BOOL)enableDebug;
 
 - (NSColor *)randomColor;
 - (NSColor *)colorForIndex:(unsigned)index;

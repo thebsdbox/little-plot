@@ -12,4 +12,7 @@
 
 @property (assign) IBOutlet NSWindow *window;
 
+- (NSMutableArray *)randomGeneratedPercentages:(NSInteger)numberOfEntries;
+- (NSMutableArray *)randomGeneratedPlots:(NSInteger)numberOfEntries highestValue:(NSInteger)highestValue;
+
 @end

@@ -15,6 +15,8 @@
 -(BOOL)setPoints:(NSMutableArray *)pointsArray;
 -(void)drawPoints;
 -(void)drawFirePoints;
+- (void)debugView:(BOOL)enableDebug;
+
 
 
 
