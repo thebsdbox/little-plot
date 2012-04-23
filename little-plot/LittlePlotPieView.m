@@ -113,6 +113,10 @@
     
 }
 
+-(NSArray *)pieSegmentColourArray {
+    return _colourArray;
+}
+
 - (void)setPieSegmentArray:(NSArray *)pieSegmentArray {
     _pieSegmentArray = pieSegmentArray;
     [self generateDrawingInformation];

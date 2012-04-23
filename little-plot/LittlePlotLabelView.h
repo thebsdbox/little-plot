@@ -15,4 +15,7 @@
 - (void)createLineLabels:(NSArray *)lineColours lineText:(NSArray *)lineText; 
 - (void)createPieLabels:(NSArray *)pieSegmentColours lineText:(NSArray *)pieSegmentText;
 
+- (void)debugView:(BOOL)enableDebug;
+
+
 @end

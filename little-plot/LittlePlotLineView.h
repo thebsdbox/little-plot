@@ -16,7 +16,7 @@
 -(void)drawPoints;
 -(void)drawFirePoints;
 - (void)debugView:(BOOL)enableDebug;
-
+-(void)setPlotColour:(NSColor *)plotColour;
 
 
 

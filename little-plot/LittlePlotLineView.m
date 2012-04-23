@@ -11,6 +11,7 @@
     NSBezierPath *_path;
     BOOL fire;
     BOOL _enableDebug;
+    NSColor *_plotColour;
 }
 
 @end
@@ -20,6 +21,10 @@
 -(BOOL)setPoints:(NSMutableArray *)pointsArray {
     _graphPlots = pointsArray;
     return true;
+}
+
+-(void)setPlotColour:(NSColor *)plotColour {
+    _plotColour = plotColour;
 }
 
 -(BOOL)isFlipped {
@@ -38,30 +43,35 @@
         NSBezierPath *rectPath = [NSBezierPath bezierPathWithRect:viewRect];
         [rectPath stroke];
     }
-    [[NSColor blackColor] set];
-    [_path stroke];
-    for (NSBezierPath* paths in _firePointArray) {
+    if (_plotColour) {
+        [_plotColour set];
+    } else {
         [[NSColor blackColor] set];
-        if ([paths currentPoint].y > 50) {
-            [[NSColor orangeColor] set];
-            NSLog(@"%@", NSStringFromPoint([paths currentPoint]));
-        } 
+    }
+    NSLog(@"%@", _path);
+    [_path stroke];
+    
+    if (_firePointArray) {
+        for (NSBezierPath* paths in _firePointArray) {
+            [[NSColor blackColor] set];
+            if ([paths currentPoint].y > 50) {
+                [[NSColor orangeColor] set];
+                NSLog(@"%@", NSStringFromPoint([paths currentPoint]));
+            } 
         
-        if ([paths currentPoint].y > 75) {
-            [[NSColor redColor] set];
+            if ([paths currentPoint].y > 75) {
+                [[NSColor redColor] set];
+            }
+            [paths stroke];
         }
-        [paths stroke];
     }
     
 }
 
 -(float)calculateSpacing {
+    // average the width of the NSView with the amount of plots to make, to work out the space between each plot.
     if (_graphPlots) {
-        //float a = [self bounds].size.width / [_graphPlots count];
-       //return [_graphPlots count] / self.bounds.size.width;
-        return self.bounds.size.width / [_graphPlots count];
-       // return [NSNumber numberWithFloat:[self.bounds.size.width / [_graphPlots count]]];
-        
+        return self.bounds.size.width / [_graphPlots count];        
     }
     return 0;
     
@@ -69,34 +79,29 @@
 
 -(void)drawPoints {
     if(_graphPlots) {
+        _path = [NSBezierPath bezierPath];
+        [_path setLineWidth:0.5];
+        NSLog(@"%@",[_graphPlots objectAtIndex:0]);
+        //Determine if X,Y or just Y
+        if ([[_graphPlots objectAtIndex:0] isKindOfClass:[NSNumber class]]) {
+            for (int i = 1; i < ([_graphPlots count] -1); i++) {
+                NSPoint point = NSMakePoint( i*[self calculateSpacing], [[_graphPlots objectAtIndex:i] intValue]);
+                [_path moveToPoint:point];
+                NSPoint nextPoint = NSMakePoint((i+1) * [self calculateSpacing], [[_graphPlots objectAtIndex:i+1] intValue]);
+                [_path lineToPoint:nextPoint];
+                
+            }
+            return;
+        }
         if ([[_graphPlots objectAtIndex:0] isKindOfClass:[NSValue class]]) {
-           
-            NSLog(@"%f", [self calculateSpacing]);
-            _path = [NSBezierPath bezierPath];
-            [_path setLineWidth:0.5];
             for (int i = 1; i < ([_graphPlots count] -1); i++) {
                 NSPoint point = [[_graphPlots objectAtIndex:i] pointValue];
-                //point.x = [self calculateSpacing]+i;
-                NSLog(@"%@", NSStringFromPoint(point));
                 [_path moveToPoint:point];
                 NSPoint nextPoint = [[_graphPlots objectAtIndex:i+1] pointValue];
                 [_path lineToPoint:nextPoint];
             }
         }
-        if ([[_graphPlots objectAtIndex:0] isKindOfClass:[NSNumber class]]) {
-            _path = [NSBezierPath bezierPath];
-            [_path setLineWidth:0.5];
-            for (int i = 1; i < ([_graphPlots count] -1); i++) {
-                NSPoint point = NSMakePoint( i*[self calculateSpacing], [[_graphPlots objectAtIndex:i] intValue]);
-                [_path moveToPoint:point];
-                //NSPoint nextPoint = [[_graphPlots objectAtIndex:i+1] pointValue];
-                NSPoint nextPoint = NSMakePoint((i+1) * [self calculateSpacing], [[_graphPlots objectAtIndex:i+1] intValue]);
-                NSLog(@"%@ to %@", NSStringFromPoint(point),NSStringFromPoint(nextPoint) );
 
-                [_path lineToPoint:nextPoint];
-        
-            }
-        }
     }
 }
 

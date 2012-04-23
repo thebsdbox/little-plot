@@ -17,6 +17,8 @@
 - (void)setPieSegmentArray:(NSArray *)pieSegmentArray;
 - (void)setPieSegmentColourArray:(NSArray *)pieSegmentColourArray;
 
+-(NSArray *)pieSegmentColourArray;
+
 //- (NSArray *)segmentPathsArray;
 - (void)generateDrawingInformation;
 - (void)debugView:(BOOL)enableDebug;
