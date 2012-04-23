@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 #import "LittlePlotPieView.h"
 #import "LittlePlotLineView.h"
-
+#import "LittlePlotLabelView.h"
 
 @implementation AppDelegate
 
@@ -25,31 +25,69 @@
     NSRect _rect = [_view frame];
     _rect.origin.x =0;
     _rect.origin.y =0;
-    _rect.size.height = _rect.size.height /2 ;
+    // Split the window in half
+    _rect.size.height = _rect.size.height /2;
+    //create a view for the bottom half
     LittlePlotPieView *pie = [[LittlePlotPieView alloc] initWithFrame:_rect];
+    //move the frame to occupy the other half of the screen
     _rect.origin.y = _rect.size.height;
+    //create the view for the top half of the screen
     LittlePlotLineView *line = [[LittlePlotLineView alloc] initWithFrame:_rect];
+    LittlePlotLineView *line2 = [[LittlePlotLineView alloc] initWithFrame:_rect];
+
+    //Create a view for the labels in the bottom right corner
+    LittlePlotLabelView *label = [[LittlePlotLabelView alloc] initWithFrame:
+                                  NSMakeRect(([pie frame].size.width-100), 0, [pie frame].size.width, [pie frame].size.height)];
+    //turn on the debug square for testing
+    [label debugView:YES];
+    //create 6 random numbers for the pie chart
     [pie setPieSegmentArray:[self randomGeneratedPercentages:6]];
-   [pie setPieSegmentColourArray:[NSMutableArray arrayWithObjects:
+    //add colours for the pie chart
+    [pie setPieSegmentColourArray:[NSMutableArray arrayWithObjects:
                                   [NSColor redColor],
                                   [NSColor yellowColor],
                                   [NSColor greenColor],
                                   [NSColor blueColor],
                                   [NSColor orangeColor],
                                   [NSColor purpleColor], nil]];
+    //create the labels, taking the colours from the pie view
+    [label createPieLabels:[pie pieSegmentColourArray] 
+                  lineText:[NSMutableArray arrayWithObjects:
+                                                                  @"red",
+                                                                  @"yellow",
+                                                                  @"green",
+                                                                  @"blue",
+                                                                  @"orange",
+                                                                  @"purple", nil]];
+    //add the views as subviews to out main view.
     [_view addSubview:pie];
     [_view addSubview:line];
-    //[line setPoints:[self randomGeneratedPlots:200 highestValue:200]];
-    [line setPoints:[self randomGeneratedPercentages:100]];
-   // [line drawFirePoints];
+    [_view addSubview:label];
+    [_view addSubview:line2];
+    //set random points and colour for line graph
+    [line setPoints:[self randomGeneratedPlots:100 highestValue:100]];
+    [line setPlotColour:[NSColor redColor]];
+    
+    [line2 setPlotColour:[NSColor greenColor]];
+    [line2 setPoints:[self randomGeneratedPercentages:100]];
+    //draw the graph
     [line drawPoints];
-   // [line display];
-    [line debugView:TRUE];
-    [pie debugView:TRUE];
-    [line setAutoresizingMask:2];
+    [line2 drawPoints];
+
+    //set the windows view, to ours with it's subviews.
     [_window setContentView:_view];
+    
+    
 
 }
+
+
+/*
+ 
+        HELPER FUNCTIONS
+ 
+ */
+
 
 - (NSMutableArray *)randomGeneratedPercentages:(NSInteger)numberOfEntries {
     NSMutableArray * array = [[NSMutableArray alloc]init];
