@@ -42,7 +42,7 @@
 {
     // Drawing code here.
     if (_enableDebug) {
-        [[NSColor redColor] set];        // NSRectFill([self bounds]);
+        [[NSColor redColor] set];
         NSRect viewRect = [self bounds];
         NSBezierPath *rectPath = [NSBezierPath bezierPathWithRect:viewRect];
         [rectPath stroke];
@@ -134,8 +134,6 @@
         return;
     }
     NSInteger labelSpacing = ([self frame].size.height / ([pieSegmentColours count]+1));
-    NSLog(@"%f diveded by %lu",[self frame].size.height, [pieSegmentColours count]);
-    NSLog(@"%lu", labelSpacing);
     _pieSegmentData = [[NSMutableArray alloc] initWithCapacity:[pieSegmentColours count]];
     for (unsigned count = 0; count < [pieSegmentColours count]; count ++ )
     {

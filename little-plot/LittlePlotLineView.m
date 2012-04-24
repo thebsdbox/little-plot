@@ -38,7 +38,7 @@
 -(void)drawRect:(NSRect)dirtyRect {
     
     if (_enableDebug) {
-        [[NSColor redColor] set];        // NSRectFill([self bounds]);
+        [[NSColor redColor] set];
         NSRect viewRect = [self bounds];
         NSBezierPath *rectPath = [NSBezierPath bezierPathWithRect:viewRect];
         [rectPath stroke];
