@@ -4,32 +4,40 @@
 
 #import "LittlePlotLineView.h"
 
+// Additional internal variables
+
 @interface LittlePlotLineView () {
     
     NSMutableArray *_graphPlots;
     NSMutableArray *_firePointArray;
     NSBezierPath *_path;
-    BOOL fire;
+    BOOL _fire;
     BOOL _enableDebug;
     NSColor *_plotColour;
 }
 
 @end
 
+// Main Implementation of methods/Selectors.
+
 @implementation LittlePlotLineView
 
--(BOOL)setPoints:(NSMutableArray *)pointsArray {
+-(BOOL)isFlipped {
+    return false;
+}
+-(void)setPoints:(NSMutableArray *)pointsArray {
     _graphPlots = pointsArray;
-    return true;
+}
+
+-(void)setFire:(BOOL)fire {
+    _fire = fire;
 }
 
 -(void)setPlotColour:(NSColor *)plotColour {
     _plotColour = plotColour;
 }
 
--(BOOL)isFlipped {
-    return false;
-}
+
 
 - (void)debugView:(BOOL)enableDebug {
     _enableDebug = enableDebug;
@@ -48,30 +56,30 @@
     } else {
         [[NSColor blackColor] set];
     }
-    NSLog(@"%@", _path);
-    [_path stroke];
+    
     
     if (_firePointArray) {
         for (NSBezierPath* paths in _firePointArray) {
             [[NSColor blackColor] set];
             if ([paths currentPoint].y > 50) {
                 [[NSColor orangeColor] set];
-                NSLog(@"%@", NSStringFromPoint([paths currentPoint]));
-            } 
-        
+            }         
             if ([paths currentPoint].y > 75) {
                 [[NSColor redColor] set];
             }
             [paths stroke];
         }
+    } else {
+        [_path stroke];
     }
     
 }
 
 -(float)calculateSpacing {
     // average the width of the NSView with the amount of plots to make, to work out the space between each plot.
+    // _graphPlots minus one as an array of 10 items returns 11 (due to starting at 0, not 1)
     if (_graphPlots) {
-        return self.bounds.size.width / [_graphPlots count];        
+        return self.bounds.size.width / ([_graphPlots count] -1);        
     }
     return 0;
     
@@ -79,47 +87,38 @@
 
 -(void)drawPoints {
     if(_graphPlots) {
-        _path = [NSBezierPath bezierPath];
+        if (!_fire)
+            _path = [NSBezierPath bezierPath];
+        else 
+            _firePointArray = [[NSMutableArray alloc] init];
         [_path setLineWidth:0.5];
-        NSLog(@"%@",[_graphPlots objectAtIndex:0]);
         //Determine if X,Y or just Y
         if ([[_graphPlots objectAtIndex:0] isKindOfClass:[NSNumber class]]) {
-            for (int i = 1; i < ([_graphPlots count] -1); i++) {
-                NSPoint point = NSMakePoint( i*[self calculateSpacing], [[_graphPlots objectAtIndex:i] intValue]);
-                [_path moveToPoint:point];
-                NSPoint nextPoint = NSMakePoint((i+1) * [self calculateSpacing], [[_graphPlots objectAtIndex:i+1] intValue]);
-                [_path lineToPoint:nextPoint];
-                
+            for (int i = 0; i < ([_graphPlots count] -1); i++) {
+                // Allocate the beginning point and it's ending point
+                if (_fire) 
+                    _path = [NSBezierPath bezierPath];
+                [_path moveToPoint:NSMakePoint( i*[self calculateSpacing], [[_graphPlots objectAtIndex:i] intValue])];
+                [_path lineToPoint:NSMakePoint((i+1) * [self calculateSpacing], [[_graphPlots objectAtIndex:i+1] intValue])];
+                if (_fire)
+                    [_firePointArray addObject:_path];  
             }
             return;
         }
         if ([[_graphPlots objectAtIndex:0] isKindOfClass:[NSValue class]]) {
-            for (int i = 1; i < ([_graphPlots count] -1); i++) {
-                NSPoint point = [[_graphPlots objectAtIndex:i] pointValue];
-                [_path moveToPoint:point];
-                NSPoint nextPoint = [[_graphPlots objectAtIndex:i+1] pointValue];
-                [_path lineToPoint:nextPoint];
+            for (int i = 0; i < ([_graphPlots count] -1); i++) {
+                // Allocate the beginning point and it's ending point
+                if (_fire) 
+                    _path = [NSBezierPath bezierPath];
+                [_path moveToPoint:[[_graphPlots objectAtIndex:i] pointValue]];
+                [_path lineToPoint:[[_graphPlots objectAtIndex:i+1] pointValue]];
+                if (_fire)
+                    [_firePointArray addObject:_path];  
             }
         }
 
     }
 }
 
--(void)drawFirePoints {
-    if(_graphPlots) {
-        _firePointArray = [[NSMutableArray alloc] init];
-        //_path = [NSBezierPath bezierPath];
-        for (int i = 0; i < ([_graphPlots count] -1); i++) {
-            NSBezierPath *path = [NSBezierPath bezierPath];
-            NSPoint point = [[_graphPlots objectAtIndex:i] pointValue];
-            [path moveToPoint:point];
-            NSPoint nextPoint = [[_graphPlots objectAtIndex:i+1] pointValue];
-            [path lineToPoint:nextPoint];
-            
-            [path setLineWidth:0.5];
-            [_firePointArray addObject:path];
-        }
-    } 
-}
 
 @end
