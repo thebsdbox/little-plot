@@ -14,7 +14,6 @@
     
     // A bool switch so that drawRect knows what to draw
     BOOL _drawingLineLabels;
-    BOOL _reDraw;
     
     // Pie Variables
     NSMutableArray *_pieSegmentData;
@@ -34,7 +33,7 @@
     if (self) {
         // Initialization code here.
     }
-    
+
     return self;
 }
 
@@ -48,7 +47,6 @@
         [rectPath stroke];
     }
        
-    
     if ( _drawingLineLabels) {
         for (NSArray *labelObjects in _lineLabelData) {
             [(NSColor *)[labelObjects objectAtIndex:1] set];
@@ -56,45 +54,17 @@
             [path stroke];
             NSPoint pathPoint = [path currentPoint];
             NSRect labelRect = NSMakeRect((pathPoint.x+5), (pathPoint.y -13), [self frame].size.width, 20);
-
-
-
-            if (_reDraw) {
-                NSTextView *labelText = [[NSTextView alloc] initWithFrame:labelRect];
-
-            [labelText setString:[labelObjects objectAtIndex:2]];
-            [labelText setEditable:NO];
-            [labelText setDrawsBackground:NO];
-            [labelText setSelectable:NO];
-            [self addSubview:labelText]; 
-            
+            [(NSString *)[labelObjects objectAtIndex:2] drawInRect:labelRect withAttributes:nil];
             }
-            }
-        _reDraw = false;
-
     } else {
-        
-    
-    for (NSArray *labelObjects in _pieSegmentData) {
+     for (NSArray *labelObjects in _pieSegmentData) {
         [(NSColor *)[labelObjects objectAtIndex:1] set];
         NSRect labelRect = [[labelObjects objectAtIndex:0] rectValue];
         NSRectFill(labelRect);
         labelRect.origin.x = (labelRect.origin.x + labelRect.size.width)+5;
         labelRect.size.width = [self frame].size.width - labelRect.origin.x;
-        
-        if (_reDraw) {
-
-        NSTextView *labelText = [[NSTextView alloc] initWithFrame:labelRect];
-        [labelText setString:[labelObjects objectAtIndex:2]];
-        [labelText setEditable:NO];
-        [labelText setDrawsBackground:NO];
-        [labelText setSelectable:NO];
-        [self addSubview:labelText];
-        
-        }
-    }
-        _reDraw = false;
-
+        [(NSString *)[labelObjects objectAtIndex:2] drawInRect:labelRect withAttributes:nil];
+     }
     }
 }
 
@@ -104,8 +74,7 @@
 
 - (void)createLineLabels:(NSArray *)lineColours lineText:(NSArray *)lineText {
     //Pair of Arrays used to create the Labels
-    _drawingLineLabels = TRUE;
-    
+    _drawingLineLabels = TRUE;    
     if ([lineColours count] != [lineText count]) {
         return;
     }
@@ -121,7 +90,6 @@
                                    [lineText objectAtIndex:count],
                                    nil]];
     }
-    _reDraw = true;
     [self display];
 }
 
@@ -143,7 +111,6 @@
                                      [pieSegmentText objectAtIndex:count],
                                      nil]];
     }
-    _reDraw = true;
     [self display];
 }
 
