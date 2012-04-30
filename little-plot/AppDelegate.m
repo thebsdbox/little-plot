@@ -65,16 +65,17 @@
     [_view addSubview:label];
     [_view addSubview:line2];
     //set random points and colour for line graph
-    //[line setPoints:[self randomGeneratedPlots:10 highestValue:100]];
+    [line setPoints:[self randomGeneratedPlots:100 highestValue:100]];
     [line setPlotColour:[NSColor redColor]];
-    [line setPoints:[self randomGeneratedPercentages:10]];
-
+    //[line setPoints:[self randomGeneratedPercentages:5]];
+    [line setAutoHeight:YES];
     [line2 setPlotColour:[NSColor greenColor]];
-    [line2 setPoints:[self randomGeneratedPercentages:10]];
+    [line2 setPoints:[self randomGeneratedPercentages:100]];
+    [line2 setAutoHeight:YES];
     //draw the graph
-    [line setFire:YES];
+    //[line setFire:YES];
     [line drawPoints];
-    //[line2 drawPoints];
+    [line2 drawPoints];
     [line debugView:YES];
 
     //set the windows view, to ours with it's subviews.

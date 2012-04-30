@@ -19,7 +19,7 @@
 -(void)setPlotColour:(NSColor *)plotColour;
 // Semi-pointless feature to have values increase in "temperature" after 50% and 75%
 -(void)setFire:(BOOL)fire;
-
+-(void)setAutoHeight:(BOOL)autoHeight;
 /* Main Functions */
 
 // This will create the relevant paths that will be then drawn by drawRect
