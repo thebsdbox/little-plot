@@ -52,7 +52,7 @@
         for( unsigned count = 0; count < [pathsArray count]; count++ )
         {
             NSBezierPath *eachPath = [pathsArray objectAtIndex:count];
-            
+            NSLog(@"%@", eachPath);
             // fill the path with the drawing color for this index
             [(NSColor *)[_colourArray objectAtIndex:count] set];
             //[[self colorForIndex:count] set];
@@ -152,7 +152,7 @@
     
 	_segmentPathsArray = [[NSMutableArray alloc] initWithCapacity:[cachedSegmentValuesArray count]];
     
-#define PADDINGAROUNDGRAPH 20.0
+#define PADDINGAROUNDGRAPH 0//20.0
     
 	NSRect viewBounds = [self bounds];
 	NSRect graphRect = NSInsetRect(viewBounds, PADDINGAROUNDGRAPH, PADDINGAROUNDGRAPH);
@@ -192,7 +192,7 @@
 		float startDegree = currentDegree;
 		currentDegree += ([eachValue floatValue] * unitSize);
 		float endDegree = currentDegree;
-        
+        NSLog(@"%f", currentDegree);
 		NSBezierPath *eachSegmentPath = [NSBezierPath bezierPath];
 		[eachSegmentPath moveToPoint:midPoint];
         
@@ -207,51 +207,3 @@
 
 
 @end
-
-
-
-
-// old Getter methods
-
-
-/*
- 
- - (NSArray *)segmentPathsArray
- {
- return _segmentPathsArray;
- }
- 
- - (NSArray *)segmentValuesArray
- {
- return _segmentValuesArray;
- }
- 
- - (NSArray *)segmentNamesArray {
- return _segmentNamesArray;
- }
- 
- // Old Setter method
- 
- - (void)setSegmentNamesArray:(NSArray *)newArray
- {
- [self willChangeValueForKey:@"segmentNamesArray"];
- _pieSegmentArray = newArray;
- [self didChangeValueForKey:@"segmentNamesArray"];
- 
- [self generateDrawingInformation];
- [self setNeedsDisplayInRect:[self visibleRect]];
- }
- 
- - (void)setSegmentValuesArray:(NSArray *)newArray
- {
- [self willChangeValueForKey:@"segmentValuesArray"];
- _pieSegmentArray = [newArray copy];
- [self didChangeValueForKey:@"segmentValuesArray"];
- 
- [self generateDrawingInformation];
- [self setNeedsDisplayInRect:[self visibleRect]];
- }
- 
- */
-
-

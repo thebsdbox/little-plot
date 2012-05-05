@@ -28,7 +28,7 @@
 }
 -(void)setPoints:(NSMutableArray *)pointsArray {
     _graphPlots = pointsArray;
-    NSLog(@"%@", [self calculateHighestValue]);
+//    NSLog(@"%@", [self calculateHighestValue]);
 }
 
 -(void)setFire:(BOOL)fire {
@@ -45,6 +45,14 @@
 
 - (void)debugView:(BOOL)enableDebug {
     _enableDebug = enableDebug;
+}
+
+
+-(void)viewDidEndLiveResize {
+    if (_autoHeight) {
+        [self drawPoints];
+    }
+    
 }
 
 -(void)drawRect:(NSRect)dirtyRect {
@@ -126,8 +134,8 @@
                 if (_fire) 
                     _path = [NSBezierPath bezierPath];
              //   NSLog(@"%@", _path);
-                NSLog(@"%@", NSStringFromRect(self.frame));
-                NSLog(@"%@", [self calculateHighestValue]);
+                //NSLog(@"%@", NSStringFromRect(self.frame));
+                //NSLog(@"%@", [self calculateHighestValue]);
                 [_path moveToPoint:NSMakePoint(i*[self calculateSpacing], heightModifier * [[_graphPlots objectAtIndex:i] intValue])];
                 [_path lineToPoint:NSMakePoint((i+1) * [self calculateSpacing], heightModifier *[[_graphPlots objectAtIndex:i+1] intValue])];
                 if (_fire)

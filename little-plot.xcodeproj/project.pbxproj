@@ -14,6 +14,7 @@
 		379371271540393C00BD1AC4 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 379371251540393C00BD1AC4 /* Credits.rtf */; };
 		3793712A1540393C00BD1AC4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 379371291540393C00BD1AC4 /* AppDelegate.m */; };
 		3793712D1540393D00BD1AC4 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3793712B1540393D00BD1AC4 /* MainMenu.xib */; };
+		37CC864A1551AA910073E494 /* LittlePlotTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 37CC86491551AA910073E494 /* LittlePlotTableView.m */; };
 		69AF86E415474ACD00FC18F4 /* LittlePlotLabelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 69AF86DF15474ACD00FC18F4 /* LittlePlotLabelView.m */; };
 		69AF86E515474ACD00FC18F4 /* LittlePlotLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 69AF86E115474ACD00FC18F4 /* LittlePlotLineView.m */; };
 		69AF86E615474ACD00FC18F4 /* LittlePlotPieView.m in Sources */ = {isa = PBXBuildFile; fileRef = 69AF86E315474ACD00FC18F4 /* LittlePlotPieView.m */; };
@@ -33,6 +34,8 @@
 		379371281540393C00BD1AC4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		379371291540393C00BD1AC4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		3793712C1540393D00BD1AC4 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		37CC86481551AA910073E494 /* LittlePlotTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LittlePlotTableView.h; path = LittlePlotViews/LittlePlotTableView.h; sourceTree = "<group>"; };
+		37CC86491551AA910073E494 /* LittlePlotTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LittlePlotTableView.m; path = LittlePlotViews/LittlePlotTableView.m; sourceTree = "<group>"; };
 		69AF86DE15474ACD00FC18F4 /* LittlePlotLabelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LittlePlotLabelView.h; path = LittlePlotViews/LittlePlotLabelView.h; sourceTree = "<group>"; };
 		69AF86DF15474ACD00FC18F4 /* LittlePlotLabelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LittlePlotLabelView.m; path = LittlePlotViews/LittlePlotLabelView.m; sourceTree = "<group>"; };
 		69AF86E015474ACD00FC18F4 /* LittlePlotLineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LittlePlotLineView.h; path = LittlePlotViews/LittlePlotLineView.h; sourceTree = "<group>"; };
@@ -130,6 +133,8 @@
 				69AF86E115474ACD00FC18F4 /* LittlePlotLineView.m */,
 				69AF86E215474ACD00FC18F4 /* LittlePlotPieView.h */,
 				69AF86E315474ACD00FC18F4 /* LittlePlotPieView.m */,
+				37CC86481551AA910073E494 /* LittlePlotTableView.h */,
+				37CC86491551AA910073E494 /* LittlePlotTableView.m */,
 			);
 			name = LittlePlotViews;
 			sourceTree = "<group>";
@@ -203,6 +208,7 @@
 				69AF86E415474ACD00FC18F4 /* LittlePlotLabelView.m in Sources */,
 				69AF86E515474ACD00FC18F4 /* LittlePlotLineView.m in Sources */,
 				69AF86E615474ACD00FC18F4 /* LittlePlotPieView.m in Sources */,
+				37CC864A1551AA910073E494 /* LittlePlotTableView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

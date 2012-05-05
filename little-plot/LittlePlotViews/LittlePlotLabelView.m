@@ -53,7 +53,7 @@
             NSBezierPath *path = [labelObjects objectAtIndex:0];
             [path stroke];
             NSPoint pathPoint = [path currentPoint];
-            NSRect labelRect = NSMakeRect((pathPoint.x+5), (pathPoint.y -13), [self frame].size.width, 20);
+            NSRect labelRect = NSMakeRect((pathPoint.x+5), pathPoint.y, [self frame].size.width, 20);
             [(NSString *)[labelObjects objectAtIndex:2] drawInRect:labelRect withAttributes:nil];
             }
     } else {
@@ -62,6 +62,9 @@
         NSRect labelRect = [[labelObjects objectAtIndex:0] rectValue];
         NSRectFill(labelRect);
         labelRect.origin.x = (labelRect.origin.x + labelRect.size.width)+5;
+        labelRect.origin.y = (labelRect.origin.y + labelRect.size.width)-15;
+         labelRect.size.height = (labelRect.origin.x - labelRect.size.height);// +10 ;
+
         labelRect.size.width = [self frame].size.width - labelRect.origin.x;
         [(NSString *)[labelObjects objectAtIndex:2] drawInRect:labelRect withAttributes:nil];
      }

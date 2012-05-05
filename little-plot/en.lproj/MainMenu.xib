@@ -1292,7 +1292,7 @@
 			<object class="NSWindowTemplate" id="972006081">
 				<int key="NSWindowStyleMask">15</int>
 				<int key="NSWindowBacking">2</int>
-				<string key="NSWindowRect">{{335, 390}, {415, 276}}</string>
+				<string key="NSWindowRect">{{335, 390}, {496, 425}}</string>
 				<int key="NSWTFlags">1954021376</int>
 				<string key="NSWindowTitle">little-plot</string>
 				<string key="NSWindowClass">NSWindow</string>
@@ -1301,7 +1301,7 @@
 				<object class="NSView" key="NSWindowView" id="439893737">
 					<reference key="NSNextResponder"/>
 					<int key="NSvFlags">256</int>
-					<string key="NSFrameSize">{415, 276}</string>
+					<string key="NSFrameSize">{496, 425}</string>
 					<reference key="NSSuperview"/>
 					<reference key="NSWindow"/>
 				</object>
