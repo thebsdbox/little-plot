@@ -35,6 +35,7 @@
     LittlePlotPieView *pie = [[LittlePlotPieView alloc] initWithFrame:_rect];
     //move the frame to occupy the other half of the screen
     _rect.origin.y = _rect.size.height;
+    _rect.origin.x = 20;
     //create the view for the top half of the screen
     LittlePlotLineView *line = [[LittlePlotLineView alloc] initWithFrame:_rect];
     LittlePlotLineView *line2 = [[LittlePlotLineView alloc] initWithFrame:_rect];
@@ -47,13 +48,14 @@
                                                                     nil]];
     
     [_view addSubview:tableView];
-    [tableView debugView:YES];
-    [tableView autoSizeCell:YES];
+    //[tableView debugView:YES];
+    //[tableView autoSizeCell:YES];
+    [tableView setCellRect:NSMakeRect(0, 0, 100, 50)];
     //Create a view for the labels in the bottom right corner
     LittlePlotLabelView *label = [[LittlePlotLabelView alloc] initWithFrame:
                                   NSMakeRect(([pie frame].size.width-100), 0, [pie frame].size.width, [pie frame].size.height)];
     //turn on the debug square for testing
-    [label debugView:YES];
+    //[label debugView:YES];
   //  [label setAutoresizingMask:NSViewHeightSizable];
     //create 6 random numbers for the pie chart
     [pie setPieSegmentArray:[self randomGeneratedPercentages:6]];
@@ -80,21 +82,19 @@
     [_view addSubview:label];
     [_view addSubview:line2];
     //set random points and colour for line graph
-    [line setPoints:[self randomGeneratedPlots:100 highestValue:100]];
+    [line setPoints:[self randomGeneratedPlots:1000 highestValue:100]];
     [line setPlotColour:[NSColor redColor]];
-    //[line setPoints:[self randomGeneratedPercentages:5]];
+
     [line setAutoHeight:YES];
-  //  [line2 setAutoresizingMask:NSViewHeightSizable];
     [line2 setPlotColour:[NSColor greenColor]];
     [line2 setPoints:[self randomGeneratedPercentages:100]];
     [line2 setAutoHeight:YES];
     //draw the graph
-    //[line setFire:YES];
+
+    
     [line drawPoints];
     [line2 drawPoints];
-    [line debugView:YES];
 
-    //set the windows view, to ours with it's subviews.
     [_window setContentView:_view];
     
     

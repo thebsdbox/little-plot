@@ -52,7 +52,7 @@
         for( unsigned count = 0; count < [pathsArray count]; count++ )
         {
             NSBezierPath *eachPath = [pathsArray objectAtIndex:count];
-            NSLog(@"%@", eachPath);
+            //NSLog(@"%@", eachPath);
             // fill the path with the drawing color for this index
             [(NSColor *)[_colourArray objectAtIndex:count] set];
             //[[self colorForIndex:count] set];
@@ -192,7 +192,7 @@
 		float startDegree = currentDegree;
 		currentDegree += ([eachValue floatValue] * unitSize);
 		float endDegree = currentDegree;
-        NSLog(@"%f", currentDegree);
+       // NSLog(@"%f", currentDegree);
 		NSBezierPath *eachSegmentPath = [NSBezierPath bezierPath];
 		[eachSegmentPath moveToPoint:midPoint];
         

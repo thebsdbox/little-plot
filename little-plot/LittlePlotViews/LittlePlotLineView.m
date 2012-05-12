@@ -120,8 +120,9 @@
 -(void)drawPoints {
     if(_graphPlots) {
         float heightModifier = 1;
-        if (!_fire)
+        if (!_fire) {
             _path = [NSBezierPath bezierPath];
+        }
         else 
             _firePointArray = [[NSMutableArray alloc] init];
         if (_autoHeight)
@@ -132,10 +133,7 @@
             for (int i = 0; i < ([_graphPlots count] -1); i++) {
                 // Allocate the beginning point and it's ending point
                 if (_fire) 
-                    _path = [NSBezierPath bezierPath];
-             //   NSLog(@"%@", _path);
-                //NSLog(@"%@", NSStringFromRect(self.frame));
-                //NSLog(@"%@", [self calculateHighestValue]);
+                    _path = [NSBezierPath bezierPath];             
                 [_path moveToPoint:NSMakePoint(i*[self calculateSpacing], heightModifier * [[_graphPlots objectAtIndex:i] intValue])];
                 [_path lineToPoint:NSMakePoint((i+1) * [self calculateSpacing], heightModifier *[[_graphPlots objectAtIndex:i+1] intValue])];
                 if (_fire)

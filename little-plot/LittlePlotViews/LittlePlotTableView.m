@@ -67,7 +67,13 @@
         for (NSInteger _row = 0; _row < [_rows integerValue]; _row++) {
             for (NSInteger _column = 0; _column < [_columns integerValue]; _column++) {
                 [[[_tableArray objectAtIndex:_row] objectAtIndex:_column] drawInRect:_drawCellRect withAttributes:nil];
-                [[NSBezierPath bezierPathWithRect:_drawCellRect] stroke];
+                NSBezierPath *cellPath = [NSBezierPath bezierPathWithRect:_drawCellRect];
+                [cellPath setLineWidth:0];
+                NSAffineTransform *transform = [NSAffineTransform transform];
+                // build the bezierPath
+                [transform translateXBy: 0.5 yBy: 0.5];
+                [cellPath transformUsingAffineTransform:transform];
+                [cellPath stroke];
                 _drawCellRect.origin.x = (_drawCellRect.size.width * (_column +1));
             }
             //Reset position

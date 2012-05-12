@@ -78,11 +78,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "little-plot/LittlePlotViews/LittlePlotLineView.m"
-         timestampString = "357506179.784557"
+         timestampString = "358536213.175358"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "132"
-         endingLineNumber = "132"
+         startingLineNumber = "127"
+         endingLineNumber = "127"
          landmarkName = "-drawPoints"
          landmarkType = "5">
       </FileBreakpoint>
@@ -91,11 +91,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "little-plot/LittlePlotViews/LittlePlotLineView.m"
-         timestampString = "357506179.784557"
+         timestampString = "358536213.175358"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "131"
-         endingLineNumber = "131"
+         startingLineNumber = "126"
+         endingLineNumber = "126"
          landmarkName = "-drawPoints"
          landmarkType = "5">
       </FileBreakpoint>
@@ -104,25 +104,25 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "little-plot/LittlePlotViews/LittlePlotLineView.m"
-         timestampString = "357505596.84367"
+         timestampString = "358536213.175358"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "120"
-         endingLineNumber = "120"
-         landmarkName = "-drawPoints"
+         startingLineNumber = "117"
+         endingLineNumber = "117"
+         landmarkName = "-calculateSpacing"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "Yes"
+         shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "little-plot/LittlePlotViews/LittlePlotLineView.m"
-         timestampString = "357506204.182479"
+         timestampString = "358536213.175358"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "88"
-         endingLineNumber = "88"
-         landmarkName = "-calculateHighestValue"
+         startingLineNumber = "129"
+         endingLineNumber = "129"
+         landmarkName = "-drawPoints"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
