@@ -11,6 +11,8 @@
 #import "LittlePlotLineView.h"
 #import "LittlePlotLabelView.h"
 #import "LittlePlotTableView.h"
+#import "LittlePlotBarView.h"
+#import "LP3DBarChartView.h"
 
 @implementation AppDelegate
 
@@ -31,11 +33,12 @@
     _rect.size.height = _rect.size.height -22;
     // Split the window in half
     _rect.size.height = _rect.size.height /3;
+    _rect.size.width = _rect.size.width /2;
     //create a view for the bottom half
     LittlePlotPieView *pie = [[LittlePlotPieView alloc] initWithFrame:_rect];
     //move the frame to occupy the other half of the screen
     _rect.origin.y = _rect.size.height;
-    _rect.origin.x = 20;
+    //_rect.origin.x = 20;
     //create the view for the top half of the screen
     LittlePlotLineView *line = [[LittlePlotLineView alloc] initWithFrame:_rect];
     LittlePlotLineView *line2 = [[LittlePlotLineView alloc] initWithFrame:_rect];
@@ -48,9 +51,23 @@
                                                                     nil]];
     
     [_view addSubview:tableView];
-    //[tableView debugView:YES];
-    //[tableView autoSizeCell:YES];
-    [tableView setCellRect:NSMakeRect(0, 0, 100, 50)];
+    _rect.origin.x = _rect.size.width;
+    LP3DBarChartView *barChartView = [[LP3DBarChartView alloc] initWithFrame:_rect];
+    [barChartView setColours:[NSArray arrayWithObjects:[NSColor colorWithDeviceRed:1 green:0 blue:0 alpha:1],
+                              [NSColor colorWithDeviceRed:0.6 green:0 blue:0 alpha:1],
+                              [NSColor colorWithDeviceRed:0.3 green:0 blue:0 alpha:1], nil]];
+    [barChartView setAutoBarSpacing:TRUE];
+    [barChartView setDepth:30];
+    [_view addSubview:barChartView];
+    [barChartView setchartArray:[self randomGeneratedPercentages:5]];
+    /*
+    LittlePlotBarView *barView = [[LittlePlotBarView alloc] initWithFrame:_rect];
+    [_view addSubview:barView];
+    [barView debugView:YES];
+     */
+     [tableView debugView:YES];
+    [tableView autoSizeCell:YES];
+    //[tableView setCellRect:NSMakeRect(0, 0, 100, 20)];
     //Create a view for the labels in the bottom right corner
     LittlePlotLabelView *label = [[LittlePlotLabelView alloc] initWithFrame:
                                   NSMakeRect(([pie frame].size.width-100), 0, [pie frame].size.width, [pie frame].size.height)];
@@ -66,7 +83,8 @@
                                   [NSColor greenColor],
                                   [NSColor blueColor],
                                   [NSColor orangeColor],
-                                  [NSColor purpleColor], nil]];
+                                  [NSColor purpleColor],
+                                   [NSColor blackColor], nil]];
     //create the labels, taking the colours from the pie view
     [label createPieLabels:[pie pieSegmentColourArray] 
                   lineText:[NSMutableArray arrayWithObjects:
@@ -75,7 +93,9 @@
                                                                   @"green",
                                                                   @"blue",
                                                                   @"orange",
-                                                                  @"purple", nil]];
+                                                                  @"purple",
+                                                                  @"black",
+                                                                    nil]];
     //add the views as subviews to out main view.
     [_view addSubview:pie];
     [_view addSubview:line];

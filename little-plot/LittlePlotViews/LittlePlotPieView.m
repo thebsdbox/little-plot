@@ -10,6 +10,8 @@
 
 @interface  LittlePlotPieView (){
     NSMutableArray *_segmentPathsArray;
+    NSBezierPath *inner;
+    NSBezierPath *outer;
     BOOL _enableDebug;
 
 }
@@ -31,12 +33,12 @@
 - (void)drawRect:(NSRect)dirtyRect
 {
     // Drawing code here.
-    
+#define PADDINGAROUNDGRAPH 0//20.0
+
+    [NSGraphicsContext saveGraphicsState];
         if (_enableDebug) {
-            [[NSColor redColor] set];        // NSRectFill([self bounds]);
-            NSRect viewRect = [self bounds];
-            NSBezierPath *rectPath = [NSBezierPath bezierPathWithRect:viewRect];
-            [rectPath stroke];
+            [[NSColor redColor] set];
+            [[NSBezierPath bezierPathWithRect:[self bounds]] stroke];
         }
         if (_colourArray == nil) {
             _colourArray = [[NSMutableArray alloc] init];
@@ -48,22 +50,21 @@
                 [_colourArray addObject:[self randomColor]];
             }
         }
-        // count;
+
         for( unsigned count = 0; count < [pathsArray count]; count++ )
         {
             NSBezierPath *eachPath = [pathsArray objectAtIndex:count];
-            //NSLog(@"%@", eachPath);
             // fill the path with the drawing color for this index
             [(NSColor *)[_colourArray objectAtIndex:count] set];
-            //[[self colorForIndex:count] set];
-            [eachPath fill];
             
-            // draw a black border around it
+            [eachPath fill];
             [[NSColor blackColor] set];
             [eachPath setLineWidth:0.5];
-            [eachPath stroke];
+            //[eachPath stroke];
         }
-   
+   // [[NSColor colorWithCalibratedRed:0.0 green:0.0 blue:0.0 alpha:0.0] set];
+    //[inner fill];
+    [NSGraphicsContext restoreGraphicsState];
 }
 
 - (BOOL)isFlipped
@@ -185,22 +186,22 @@
 	// cycle through the segmentValues and create the bezier paths
 	float currentDegree = 0;
 	unsigned currentIndex;
-	for( currentIndex = 0; currentIndex < [cachedSegmentValuesArray count]; currentIndex++ )
+     for( currentIndex = 0; currentIndex < [cachedSegmentValuesArray count]; currentIndex++ )
 	{
 		NSNumber *eachValue = [cachedSegmentValuesArray objectAtIndex:currentIndex];
         
 		float startDegree = currentDegree;
 		currentDegree += ([eachValue floatValue] * unitSize);
 		float endDegree = currentDegree;
-       // NSLog(@"%f", currentDegree);
 		NSBezierPath *eachSegmentPath = [NSBezierPath bezierPath];
+
 		[eachSegmentPath moveToPoint:midPoint];
         
-		[eachSegmentPath appendBezierPathWithArcWithCenter:midPoint radius:radius startAngle:startDegree endAngle:endDegree];
-        //[eachSegmentPath appendBezierPathWithArcFromPoint:startDegree toPoint:endDegree radius:radius];
-		//[eachSegmentPath closePath]; // close path also handles the lines from the midPoint to the start and end of the arc
-		[eachSegmentPath setLineWidth:2.0];
-        
+        [eachSegmentPath appendBezierPathWithArcWithCenter:midPoint radius:radius/2 startAngle:startDegree endAngle:endDegree];
+        [eachSegmentPath appendBezierPathWithArcWithCenter:midPoint radius:radius startAngle:endDegree endAngle:startDegree clockwise:YES];
+        //Close for completeness (also if drawing lines around the slices.
+        [eachSegmentPath closePath];
+       
 		[_segmentPathsArray addObject:eachSegmentPath];
 	}
 }

@@ -59,10 +59,9 @@
     
     if (_enableDebug) {
         [[NSColor redColor] set];
-        NSRect viewRect = [self bounds];
-        NSBezierPath *rectPath = [NSBezierPath bezierPathWithRect:viewRect];
-        [rectPath stroke];
+        [[NSBezierPath bezierPathWithRect:[self bounds]] stroke];
     }
+    
     if (_plotColour) {
         [_plotColour set];
     } else {

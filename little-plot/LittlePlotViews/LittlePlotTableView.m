@@ -35,7 +35,7 @@
 -(void)autoSizeCell:(BOOL)autoSize {
     if (_tableArray) {
         [self calculateTableDimensions];
-        _cellRect = NSMakeRect(0, 0, ([self bounds].size.width / [_columns floatValue]), ([self bounds].size.height / [_rows floatValue]));
+        _cellRect = NSMakeRect(0, 0, (([self bounds].size.width-1) / [_columns floatValue]), (([self bounds].size.height -1) / [_rows floatValue]));
     }
 }
 
@@ -54,9 +54,7 @@
 -(void)drawRect:(NSRect)dirtyRect {
     if (_enableDebug) {
         [[NSColor redColor] set];
-        NSRect viewRect = [self bounds];
-        NSBezierPath *rectPath = [NSBezierPath bezierPathWithRect:viewRect];
-        [rectPath stroke];
+        [[NSBezierPath bezierPathWithRect:[self bounds]] stroke];
     }
 
      [self calculateTableDimensions];
@@ -68,7 +66,7 @@
             for (NSInteger _column = 0; _column < [_columns integerValue]; _column++) {
                 [[[_tableArray objectAtIndex:_row] objectAtIndex:_column] drawInRect:_drawCellRect withAttributes:nil];
                 NSBezierPath *cellPath = [NSBezierPath bezierPathWithRect:_drawCellRect];
-                [cellPath setLineWidth:0];
+                [cellPath setLineWidth:2];
                 NSAffineTransform *transform = [NSAffineTransform transform];
                 // build the bezierPath
                 [transform translateXBy: 0.5 yBy: 0.5];
