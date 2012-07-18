@@ -78,20 +78,7 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "little-plot/LittlePlotViews/LittlePlotLineView.m"
-         timestampString = "358536213.175358"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "127"
-         endingLineNumber = "127"
-         landmarkName = "-drawPoints"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "little-plot/LittlePlotViews/LittlePlotLineView.m"
-         timestampString = "358536213.175358"
+         timestampString = "358971862.225544"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "126"
@@ -104,11 +91,24 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "little-plot/LittlePlotViews/LittlePlotLineView.m"
-         timestampString = "358536213.175358"
+         timestampString = "358971862.225544"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "117"
-         endingLineNumber = "117"
+         startingLineNumber = "125"
+         endingLineNumber = "125"
+         landmarkName = "-drawPoints"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "little-plot/LittlePlotViews/LittlePlotLineView.m"
+         timestampString = "358971862.225544"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "116"
+         endingLineNumber = "116"
          landmarkName = "-calculateSpacing"
          landmarkType = "5">
       </FileBreakpoint>
@@ -117,11 +117,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "little-plot/LittlePlotViews/LittlePlotLineView.m"
-         timestampString = "358536213.175358"
+         timestampString = "358971862.225544"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "129"
-         endingLineNumber = "129"
+         startingLineNumber = "128"
+         endingLineNumber = "128"
          landmarkName = "-drawPoints"
          landmarkType = "5">
       </FileBreakpoint>
