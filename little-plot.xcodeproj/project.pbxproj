@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		370795061541B1430012A366 /* notes.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 370795051541B1430012A366 /* notes.rtf */; };
+		376CBB8015B88BA0009AF01C /* LPPieChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 376CBB7F15B88BA0009AF01C /* LPPieChartView.m */; };
 		378FCB6B15B6E80C001B39E1 /* LP3DBarChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 378FCB6A15B6E80C001B39E1 /* LP3DBarChartView.m */; };
 		379371171540393C00BD1AC4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 379371161540393C00BD1AC4 /* Cocoa.framework */; };
 		379371211540393C00BD1AC4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3793711F1540393C00BD1AC4 /* InfoPlist.strings */; };
@@ -19,11 +20,12 @@
 		6947A2921565798B009DD390 /* LittlePlotBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6947A2911565798B009DD390 /* LittlePlotBarView.m */; };
 		69AF86E415474ACD00FC18F4 /* LittlePlotLabelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 69AF86DF15474ACD00FC18F4 /* LittlePlotLabelView.m */; };
 		69AF86E515474ACD00FC18F4 /* LittlePlotLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 69AF86E115474ACD00FC18F4 /* LittlePlotLineView.m */; };
-		69AF86E615474ACD00FC18F4 /* LittlePlotPieView.m in Sources */ = {isa = PBXBuildFile; fileRef = 69AF86E315474ACD00FC18F4 /* LittlePlotPieView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		370795051541B1430012A366 /* notes.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = notes.rtf; sourceTree = "<group>"; };
+		376CBB7E15B88BA0009AF01C /* LPPieChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LPPieChartView.h; path = LittlePlotViews/LPPieChartView.h; sourceTree = "<group>"; };
+		376CBB7F15B88BA0009AF01C /* LPPieChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LPPieChartView.m; path = LittlePlotViews/LPPieChartView.m; sourceTree = "<group>"; };
 		378FCB6915B6E80C001B39E1 /* LP3DBarChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LP3DBarChartView.h; path = LittlePlotViews/LP3DBarChartView.h; sourceTree = "<group>"; };
 		378FCB6A15B6E80C001B39E1 /* LP3DBarChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LP3DBarChartView.m; path = LittlePlotViews/LP3DBarChartView.m; sourceTree = "<group>"; };
 		379371121540393C00BD1AC4 /* little-plot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "little-plot.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -46,8 +48,6 @@
 		69AF86DF15474ACD00FC18F4 /* LittlePlotLabelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LittlePlotLabelView.m; path = LittlePlotViews/LittlePlotLabelView.m; sourceTree = "<group>"; };
 		69AF86E015474ACD00FC18F4 /* LittlePlotLineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LittlePlotLineView.h; path = LittlePlotViews/LittlePlotLineView.h; sourceTree = "<group>"; };
 		69AF86E115474ACD00FC18F4 /* LittlePlotLineView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LittlePlotLineView.m; path = LittlePlotViews/LittlePlotLineView.m; sourceTree = "<group>"; };
-		69AF86E215474ACD00FC18F4 /* LittlePlotPieView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LittlePlotPieView.h; path = LittlePlotViews/LittlePlotPieView.h; sourceTree = "<group>"; };
-		69AF86E315474ACD00FC18F4 /* LittlePlotPieView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LittlePlotPieView.m; path = LittlePlotViews/LittlePlotPieView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,8 +69,6 @@
 				69AF86DF15474ACD00FC18F4 /* LittlePlotLabelView.m */,
 				69AF86E015474ACD00FC18F4 /* LittlePlotLineView.h */,
 				69AF86E115474ACD00FC18F4 /* LittlePlotLineView.m */,
-				69AF86E215474ACD00FC18F4 /* LittlePlotPieView.h */,
-				69AF86E315474ACD00FC18F4 /* LittlePlotPieView.m */,
 				37CC86481551AA910073E494 /* LittlePlotTableView.h */,
 				37CC86491551AA910073E494 /* LittlePlotTableView.m */,
 				6947A2901565798B009DD390 /* LittlePlotBarView.h */,
@@ -153,6 +151,8 @@
 				378FCB7115B6E878001B39E1 /* Incorrect NameSpace */,
 				378FCB6915B6E80C001B39E1 /* LP3DBarChartView.h */,
 				378FCB6A15B6E80C001B39E1 /* LP3DBarChartView.m */,
+				376CBB7E15B88BA0009AF01C /* LPPieChartView.h */,
+				376CBB7F15B88BA0009AF01C /* LPPieChartView.m */,
 			);
 			name = LittlePlotViews;
 			sourceTree = "<group>";
@@ -225,10 +225,10 @@
 				3793712A1540393C00BD1AC4 /* AppDelegate.m in Sources */,
 				69AF86E415474ACD00FC18F4 /* LittlePlotLabelView.m in Sources */,
 				69AF86E515474ACD00FC18F4 /* LittlePlotLineView.m in Sources */,
-				69AF86E615474ACD00FC18F4 /* LittlePlotPieView.m in Sources */,
 				37CC864A1551AA910073E494 /* LittlePlotTableView.m in Sources */,
 				6947A2921565798B009DD390 /* LittlePlotBarView.m in Sources */,
 				378FCB6B15B6E80C001B39E1 /* LP3DBarChartView.m in Sources */,
+				376CBB8015B88BA0009AF01C /* LPPieChartView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

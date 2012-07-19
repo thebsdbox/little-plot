@@ -9,6 +9,8 @@
 #import <Cocoa/Cocoa.h>
 
 @interface LP3DBarChartView : NSView
+
+//Setters
 - (void)setRect:(NSRect)chartRect;
 - (void)setDepth:(NSInteger)depth;
 - (void)setColours:(NSArray*)colourArray;

@@ -86,7 +86,6 @@
                 [barChartBezier setLineWidth:barLineThickness];
                 [[(NSColor *)[barColourArray objectAtIndex:0] colorWithAlphaComponent:(0.5/ counter)] set];
                 [barChartBezier setLineWidth:barLineThickness];
-                //[barChartBezier stroke];
                 [barChartBezier fill];
                 counter++;
             }
@@ -209,6 +208,9 @@
     NSBezierPath* depthPath = [NSBezierPath bezierPath];
     [depthPath moveToPoint: NSMakePoint(chartRect.size.width, chartRect.origin.y)]; //Move to D
     [depthPath lineToPoint: NSMakePoint(chartRect.size.width, chartRect.size.height)]; //Draw to A
+    if (barDepth > chartRect.size.height) {
+        NSLog(@"too high"); 
+    }
     [depthPath lineToPoint: NSMakePoint((chartRect.size.width*2)-chartRect.origin.x, chartRect.size.height+barDepth)];
     [depthPath lineToPoint: NSMakePoint((chartRect.size.width*2)-chartRect.origin.x, barDepth)];
     [depthPath lineToPoint: NSMakePoint(chartRect.size.width, chartRect.origin.y)];

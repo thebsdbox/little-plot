@@ -13,6 +13,7 @@
 #import "LittlePlotTableView.h"
 #import "LittlePlotBarView.h"
 #import "LP3DBarChartView.h"
+#import "LPPieChartView.h"
 
 @implementation AppDelegate
 
@@ -115,7 +116,11 @@
     [line drawPoints];
     [line2 drawPoints];
 
-    [_window setContentView:_view];
+    LPPieChartView *pieChart = [[LPPieChartView alloc] initWithFrame:[_window frame]];
+    [_window setBackgroundColor:[NSColor greenColor]];
+    [pieChart setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
+    [pieChart setPieSegmentArray:[self randomGeneratedPercentages:6]];
+    [_window setContentView:pieChart];
     
     
 
