@@ -1,13 +1,14 @@
-//  LittlePlotLineView.m
+//
+//  LPLineChartView.m
 //  little-plot
+//
+//  Created by Daniel Finneran on 25/07/2012.
+//
+//
 
+#import "LPLineChartView.h"
 
-#import "LittlePlotLineView.h"
-
-// Additional internal variables
-
-@interface LittlePlotLineView () {
-    
+@interface LPLineChartView () {
     NSMutableArray *_graphPlots;
     NSMutableArray *_firePointArray;
     NSBezierPath *_path;
@@ -16,19 +17,15 @@
     BOOL _enableDebug;
     NSColor *_plotColour;
 }
-
 @end
 
-// Main Implementation of methods/Selectors.
-
-@implementation LittlePlotLineView
+@implementation LPLineChartView
 
 -(BOOL)isFlipped {
     return false;
 }
--(void)setPoints:(NSMutableArray *)pointsArray {
-    _graphPlots = pointsArray;
-//    NSLog(@"%@", [self calculateHighestValue]);
+-(void)setPoints:(NSArray *)pointsArray {
+    _graphPlots = [pointsArray mutableCopy];
 }
 
 -(void)setFire:(BOOL)fire {
@@ -55,8 +52,19 @@
     
 }
 
--(void)drawRect:(NSRect)dirtyRect {
+- (id)initWithFrame:(NSRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        // Initialization code here.
+    }
     
+    return self;
+}
+
+- (void)drawRect:(NSRect)dirtyRect
+{
+    // Drawing code here.
     if (_enableDebug) {
         [[NSColor redColor] set];
         [[NSBezierPath bezierPathWithRect:[self bounds]] stroke];
@@ -74,7 +82,7 @@
             [[NSColor blackColor] set];
             if ([paths currentPoint].y > 50) {
                 [[NSColor orangeColor] set];
-            }         
+            }
             if ([paths currentPoint].y > 75) {
                 [[NSColor redColor] set];
             }
@@ -83,26 +91,25 @@
     } else {
         [_path stroke];
     }
-    
 }
+
 
 -(NSNumber *)calculateHighestValue {
     NSNumber *arrayValue = [NSNumber numberWithInt:0];
-    
     if ([[_graphPlots objectAtIndex:0] isKindOfClass:[NSNumber class]]) {
         for (float i = 0; i < [_graphPlots count]; i++) {
-            if ((NSNumber *)[_graphPlots objectAtIndex:i] > arrayValue) 
+            if ((NSNumber *)[_graphPlots objectAtIndex:i] > arrayValue)
                 arrayValue = [_graphPlots objectAtIndex:i];
         }
-            
-            
+        
+        
     } else if ([[_graphPlots objectAtIndex:0] isKindOfClass:[NSValue class]]) {
         for (float i = 0; i < [_graphPlots count]; i++) {
             if ([[_graphPlots objectAtIndex:i] pointValue].y  > [arrayValue doubleValue])
                 arrayValue = [NSNumber numberWithDouble:[[_graphPlots objectAtIndex:i] pointValue].y];
         }
     }
-        
+    
     return arrayValue;
 }
 
@@ -110,7 +117,7 @@
     // average the width of the NSView with the amount of plots to make, to work out the space between each plot.
     // _graphPlots minus one as an array of 10 items returns 11 (due to starting at 0, not 1)
     if (_graphPlots) {
-        return self.bounds.size.width / ([_graphPlots count] -1);        
+        return self.bounds.size.width / ([_graphPlots count] -1);
     }
     return 0;
     
@@ -122,7 +129,7 @@
         if (!_fire) {
             _path = [NSBezierPath bezierPath];
         }
-        else 
+        else
             _firePointArray = [[NSMutableArray alloc] init];
         if (_autoHeight)
             heightModifier = [self frame].size.height / [[self calculateHighestValue] floatValue];
@@ -131,28 +138,29 @@
         if ([[_graphPlots objectAtIndex:0] isKindOfClass:[NSNumber class]]) {
             for (int i = 0; i < ([_graphPlots count] -1); i++) {
                 // Allocate the beginning point and it's ending point
-                if (_fire) 
-                    _path = [NSBezierPath bezierPath];             
+                if (_fire)
+                    _path = [NSBezierPath bezierPath];
                 [_path moveToPoint:NSMakePoint(i*[self calculateSpacing], heightModifier * [[_graphPlots objectAtIndex:i] intValue])];
                 [_path lineToPoint:NSMakePoint((i+1) * [self calculateSpacing], heightModifier *[[_graphPlots objectAtIndex:i+1] intValue])];
                 if (_fire)
-                    [_firePointArray addObject:_path];  
+                    [_firePointArray addObject:_path];
             }
             return;
         }
         if ([[_graphPlots objectAtIndex:0] isKindOfClass:[NSValue class]]) {
             for (int i = 0; i < ([_graphPlots count] -1); i++) {
                 // Allocate the beginning point and it's ending point
-                if (_fire) 
+                if (_fire)
                     _path = [NSBezierPath bezierPath];
                 [_path moveToPoint:[[_graphPlots objectAtIndex:i] pointValue]];
                 [_path lineToPoint:[[_graphPlots objectAtIndex:i+1] pointValue]];
                 if (_fire)
-                    [_firePointArray addObject:_path];  
+                    [_firePointArray addObject:_path];
             }
         }
-
+        
     }
+
 }
 
 

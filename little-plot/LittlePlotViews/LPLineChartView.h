@@ -1,20 +1,20 @@
 //
-//  LittlePlotLineView.h
+//  LPLineChartView.h
 //  little-plot
 //
-//  Created by Daniel Finneran on 19/04/2012.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Created by Daniel Finneran on 25/07/2012.
+//
 //
 
 #import <Cocoa/Cocoa.h>
 
-@interface LittlePlotLineView : NSView 
+@interface LPLineChartView : NSView
 
 /* Setter Methods */
 
 // Set the Array of points to be used, this can either be an array of NSNumbers
 // or an array of NSPoints (that will need wrapping with the NSValue class
--(void)setPoints:(NSMutableArray *)pointsArray;
+-(void)setPoints:(NSArray *)pointsArray;
 // Set an alternative colour, if not used then +(NSColor *)blackcolor is used
 -(void)setPlotColour:(NSColor *)plotColour;
 // Semi-pointless feature to have values increase in "temperature" after 50% and 75%

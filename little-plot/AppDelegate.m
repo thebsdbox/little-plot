@@ -7,13 +7,24 @@
 //
 
 #import "AppDelegate.h"
-#import "LittlePlotPieView.h"
-#import "LittlePlotLineView.h"
 #import "LittlePlotLabelView.h"
 #import "LittlePlotTableView.h"
 #import "LittlePlotBarView.h"
-#import "LP3DBarChartView.h"
+// Name Space correct
 #import "LPPieChartView.h"
+#import "LPLineChartView.h"
+// 3D
+#import "LP3DBarChartView.h"
+#import "LP3DPieChartView.h"
+
+@interface AppDelegate (){
+    NSTimer *timer;
+    LPPieChartView *timedPieChart;
+    LPLineChartView *lineView;
+    NSMutableArray *pointsArray;
+}
+
+@end
 
 @implementation AppDelegate
 
@@ -36,15 +47,11 @@
     _rect.size.height = _rect.size.height /3;
     _rect.size.width = _rect.size.width /2;
     //create a view for the bottom half
-    LittlePlotPieView *pie = [[LittlePlotPieView alloc] initWithFrame:_rect];
     //move the frame to occupy the other half of the screen
     _rect.origin.y = _rect.size.height;
     //_rect.origin.x = 20;
     //create the view for the top half of the screen
-    LittlePlotLineView *line = [[LittlePlotLineView alloc] initWithFrame:_rect];
-    LittlePlotLineView *line2 = [[LittlePlotLineView alloc] initWithFrame:_rect];
-
-    _rect.origin.y = (_rect.size.height * 2);
+      _rect.origin.y = (_rect.size.height * 2);
     LittlePlotTableView *tableView = [[LittlePlotTableView alloc] initWithFrame:_rect];
     [tableView setTabelArray:[[NSMutableArray alloc] initWithObjects:[NSArray arrayWithObjects:@"1" , @"2", @"3", @"test",nil],
                                                                     [NSArray arrayWithObjects:@"4" , @"5", @"6", @"test2",nil],
@@ -70,61 +77,66 @@
     [tableView autoSizeCell:YES];
     //[tableView setCellRect:NSMakeRect(0, 0, 100, 20)];
     //Create a view for the labels in the bottom right corner
-    LittlePlotLabelView *label = [[LittlePlotLabelView alloc] initWithFrame:
-                                  NSMakeRect(([pie frame].size.width-100), 0, [pie frame].size.width, [pie frame].size.height)];
+//    LittlePlotLabelView *label = [[LittlePlotLabelView alloc] initWithFrame:
+     //                             NSMakeRect(([pie frame].size.width-100), 0, [pie frame].size.width, [pie frame].size.height)];
     //turn on the debug square for testing
     //[label debugView:YES];
   //  [label setAutoresizingMask:NSViewHeightSizable];
     //create 6 random numbers for the pie chart
-    [pie setPieSegmentArray:[self randomGeneratedPercentages:6]];
+ //   [pie setPieSegmentArray:[self randomGeneratedPercentages:6]];
     //add colours for the pie chart
-    [pie setPieSegmentColourArray:[NSMutableArray arrayWithObjects:
-                                  [NSColor redColor],
-                                  [NSColor yellowColor],
-                                  [NSColor greenColor],
-                                  [NSColor blueColor],
-                                  [NSColor orangeColor],
-                                  [NSColor purpleColor],
-                                   [NSColor blackColor], nil]];
+   // [pie setPieSegmentColourArray:[NSMutableArray arrayWithObjects:
+     //                             [NSColor redColor],
+       //                           [NSColor yellowColor],
+         //                         [NSColor greenColor],
+           //                       [NSColor blueColor],
+             //                     [NSColor orangeColor],
+               //                   [NSColor purpleColor],
+                 //                  [NSColor blackColor], nil]];
     //create the labels, taking the colours from the pie view
-    [label createPieLabels:[pie pieSegmentColourArray] 
-                  lineText:[NSMutableArray arrayWithObjects:
-                                                                  @"red",
-                                                                  @"yellow",
-                                                                  @"green",
-                                                                  @"blue",
-                                                                  @"orange",
-                                                                  @"purple",
-                                                                  @"black",
-                                                                    nil]];
+  //  [label createPieLabels:[pie pieSegmentColourArray]
+    //              lineText:[NSMutableArray arrayWithObjects:
+      //                                                            @"red",
+        //                                                          @"yellow",
+          //                                                        @"green",
+            //                                                      @"blue",
+              //                                                    @"orange",
+                //                                                  @"purple",
+                  //                                                @"black",
+                    //                                                nil]];
     //add the views as subviews to out main view.
-    [_view addSubview:pie];
-    [_view addSubview:line];
-    [_view addSubview:label];
-    [_view addSubview:line2];
-    //set random points and colour for line graph
-    [line setPoints:[self randomGeneratedPlots:1000 highestValue:100]];
-    [line setPlotColour:[NSColor redColor]];
-
-    [line setAutoHeight:YES];
-    [line2 setPlotColour:[NSColor greenColor]];
-    [line2 setPoints:[self randomGeneratedPercentages:100]];
-    [line2 setAutoHeight:YES];
-    //draw the graph
-
-    
-    [line drawPoints];
-    [line2 drawPoints];
-
-    LPPieChartView *pieChart = [[LPPieChartView alloc] initWithFrame:[_window frame]];
-    [_window setBackgroundColor:[NSColor greenColor]];
+    //[_view addSubview:pie];
+/*
+    LP3DPieChartView *pieChart = [[LP3DPieChartView alloc] initWithFrame:[_window frame]];
+    [pieChart setDebugView:YES];
+    [_window setBackgroundColor:[NSColor blackColor]];
     [pieChart setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
     [pieChart setPieSegmentArray:[self randomGeneratedPercentages:6]];
     [_window setContentView:pieChart];
-    
-    
+   
+    timedPieChart = [[LPPieChartView alloc] initWithFrame:[_window frame]];
+    timer = [NSTimer scheduledTimerWithTimeInterval:3.0 target:self selector:@selector(drawGraph) userInfo:nil repeats:YES];
+    [timedPieChart setPieSegmentColourArray:[NSMutableArray arrayWithObjects:
+                                            [NSColor redColor],
+                                            [NSColor yellowColor],
+                                            [NSColor greenColor],
+                                            [NSColor blueColor],
+                                            [NSColor orangeColor],
+                                            [NSColor purpleColor],
+                                             nil]];
+    [_window setContentView:timedPieChart];
+ 
+*/
+    pointsArray = [[NSMutableArray alloc]initWithCapacity:100];
+    lineView = [[LPLineChartView alloc]initWithFrame:[_window frame]];
+    [lineView debugView:YES];
+    [lineView setAutoHeight:YES];
+    [_window setContentView:lineView];
+    [lineView setPlotColour:[NSColor blackColor]];
 
+    timer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(drawGraph) userInfo:nil repeats:YES];
 }
+
 
 
 /*
@@ -134,8 +146,22 @@
  */
 
 
+-(void)drawGraph {
+    //[timedPieChart setPieSegmentArray:[self randomGeneratedPercentages:6]];
+//    [pointsArray insertObject:[[NSNumber alloc] initWithInt:arc4random()%100]  atIndex:[pointsArray count]];
+    [pointsArray addObject:[[NSNumber alloc] initWithInt:arc4random()%100]];
+    if (!([pointsArray count] < 100)) {
+        [lineView setPoints:[pointsArray subarrayWithRange:NSMakeRange([pointsArray count] - 99,99)]];
+    } else
+    {
+        [lineView setPoints:pointsArray];
+    }
+    [lineView drawPoints];
+    [lineView display];
+}
+
 - (NSMutableArray *)randomGeneratedPercentages:(NSInteger)numberOfEntries {
-    NSMutableArray * array = [[NSMutableArray alloc]init];
+    NSMutableArray * array = [[NSMutableArray alloc]initWithCapacity:100];
     for (int i = 0; i < numberOfEntries; i++) {
         NSNumber *percent = [[NSNumber alloc] initWithInt:arc4random()%100];
         [array addObject:percent];
@@ -153,7 +179,7 @@
     for (int i = 0; i < numberOfEntries; i++) {
         NSPoint point = {(i+i)*2,arc4random()%highestValue};
        // NSPoint point = {i,arc4random()%highestValue};
-        [array addObject:[NSValue valueWithPoint:point]];
+        [array insertObject:[NSValue valueWithPoint:point] atIndex:0];
     }
     return array;
 }
