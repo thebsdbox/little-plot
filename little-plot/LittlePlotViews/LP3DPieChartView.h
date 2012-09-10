@@ -22,8 +22,6 @@
     //Getters
     - (NSArray *)pieSegmentColourArray;
     //Other Methods
-    - (NSColor *)randomColor;
-    - (NSColor *)colorForIndex:(unsigned)index;
     - (void)generateDrawingInformation;
 
 

@@ -7,6 +7,7 @@
 //
 
 #import "LPPieChartView.h"
+#import "LPUtils.h"
 
 @interface LPPieChartView () {
     
@@ -67,7 +68,7 @@
     if ([_colourArray count] < [_pieSegmentArray count]) {
         while ([_colourArray count] <= [_pieSegmentArray count]) {
             //if there are no colours or empty spaces add some random colours
-            [_colourArray addObject:[self randomColor]];
+            [_colourArray addObject:[LPUtils randomColor]];
         }
     }
 
@@ -78,32 +79,6 @@
         [(NSColor *)[_colourArray objectAtIndex:count] set];
         [eachPath fill];
     }
-}
-
-
-- (NSColor *)randomColor
-{
-	float red = (arc4random()%1000)/1000.0;
-	float green = (arc4random()%1000)/1000.0;
-	float blue = (arc4random()%1000)/1000.0;
-//	float alpha = (arc4random()%1000)/1000.0;
-	return [NSColor colorWithCalibratedRed:red green:green blue:blue alpha:1];
-}
-
-- (NSColor *)colorForIndex:(unsigned)index
-{
-	if( _colourArray == nil )
-		_colourArray = [[NSMutableArray alloc] init];
-	
-	if( index >= [_colourArray count] )
-	{
-		NSUInteger currentNum = 0;
-		for(currentNum = [_colourArray count]; currentNum  <= index; currentNum++ )
-		{
-			[_colourArray addObject:[self randomColor]];
-		}
-	}
-	return [_colourArray objectAtIndex:index];
 }
 
 - (void)generateDrawingInformation
